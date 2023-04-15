@@ -3,9 +3,18 @@ const hoursEl = document.getElementById("hours");
 const minutesEl = document.getElementById("minutes");
 const secondsEl = document.getElementById("seconds");
 
-const endDate="27 May 2023";
+let endDate;
 
 function countdown(){
+  let form = document.getElementById("form");
+  form.addEventListener("submit", (e)=>{
+    e.preventDefault()
+    let h1El = document.querySelector("h1")
+    let eventName = document.getElementById("eventName").value
+    let eventDate = document.getElementById("eventDate").value
+    h1El.innerHTML = eventName
+    endDate = eventDate;
+  })
   const brunchDate = new Date(endDate);
   const currentDate = new Date();
   const remainingDate = brunchDate-currentDate
@@ -29,5 +38,6 @@ function countdown(){
 function formatTheTime(time){
   return time < 10 ? `0${time}`: time;
 }
+
 countdown()
 setInterval(countdown, 1000);

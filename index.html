@@ -12,7 +12,31 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <h1>Birthday Brunch Countdown</h1>
+    <form id="form">
+      <div class="userEntry">
+        <label>Event</label>
+        <input
+          name ="eventName"
+          id="eventName"
+          type="text"
+          required
+        />
+      </div>
+      <div class="userEntry">
+        <label>Date</label>
+        <input
+          name="eventDate"
+          id="eventDate"
+          type="date"
+          placeholder="01 January 2023"
+          required
+        />
+      </div>
+      <div>
+        <input type="submit" value="Start Countdown"/>
+      </div>
+    </form>
+    <h1></h1>
     <div class="countdown-el countdown-container">
       <div class="days-container">
         <p class="big-text" id="days">0</p>
