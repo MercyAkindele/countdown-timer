@@ -5,39 +5,38 @@ const secondsEl = document.getElementById("seconds");
 
 let endDate;
 
-function countdown(){
-  let form = document.getElementById("form");
-  form.addEventListener("submit", (e)=>{
-    e.preventDefault()
-    let h1El = document.querySelector("h1")
-    let eventName = document.getElementById("eventName").value
-    let eventDate = document.getElementById("eventDate").value
-    h1El.innerHTML = eventName
-    endDate = eventDate;
-  })
-  const brunchDate = new Date(endDate);
+const form = document.getElementById("form");
+const h1El = document.querySelector("h1");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const eventName = document.getElementById("eventName").value;
+  const eventDate = document.getElementById("eventDate").value;
+  h1El.innerHTML = eventName;
+  endDate = new Date(eventDate);
+});
+
+function countdown() {
+  let theEventDate = endDate ? new Date(endDate) : new Date();
   const currentDate = new Date();
-  const remainingDate = brunchDate-currentDate
+  const remainingTime = theEventDate.getTime() - currentDate.getTime();
 
-  const mSeconds = (remainingDate)/1000;
+  //Remaining time in days, hours, minutes, and seconds
+  const days = Math.floor(remainingTime / 1000 / 60 / 60 / 24);
+  const hours = Math.floor(remainingTime / 1000 / 60 / 60) % 24;
+  const minutes = Math.floor(remainingTime / 1000 / 60) % 60;
+  const seconds = Math.floor(remainingTime / 1000) % 60;
 
-  const days = Math.floor(mSeconds/3600/24)
-  const hours = Math.floor(mSeconds/3600)% 24
-  const minutes = new Date(remainingDate).getMinutes();
-  const seconds = new Date(remainingDate).getSeconds();
-
-
-
+  //manipulating the DOM to show time that was obtained from the user
   daysEl.innerHTML = formatTheTime(days);
   hoursEl.innerHTML = formatTheTime(hours);
   minutesEl.innerHTML = formatTheTime(minutes);
   secondsEl.innerHTML = formatTheTime(seconds);
-
-
 }
-function formatTheTime(time){
-  return time < 10 ? `0${time}`: time;
+function formatTheTime(time) {
+  return time < 10 ? `0${time}` : time;
 }
 
-countdown()
+countdown();
 setInterval(countdown, 1000);
