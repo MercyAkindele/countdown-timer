@@ -1,7 +1,7 @@
 # countdown-timer
 This is a countdown timer app that allows you to countdown the amount of time left until a specific event. The app accepts input from the user for the event name and event date, and then calculates and displays the amount of time left until the event in days, hours, minutes and seconds.
 
-![Countdown-timer screenshot](./images/countdown-timer.PNG)
+![Countdown-timer screenshot](./images/countdown-timer.png)
 
 ## How to use
 To use this app, simply follow these steps:
